@@ -1,65 +1,84 @@
 package edu.handong.csee.java.example.fileread.benchmark;
 
 import java.io.*;
+import java.util.Scanner;
 
 /**
- * Created by sherxon on 4/23/17. https://github.com/sherxon/AlgoDS/tree/master/src/oi
+ * Created by sherxon on 4/23/17.
+ * https://github.com/sherxon/AlgoDS/tree/master/src/oi
  */
 public class UsingBufferedReader {
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
+		// -------------- Test reading User Input file. --------------------
 
-        //-------------- Test reading 1 MB file. --------------------
+		System.out.print("Please Input File name: ");
+		Scanner s = new Scanner(System.in);
+		String filename = s.nextLine();
+		s.close();
 
-        StopWatch.start();
+		StopWatch.start();
+		try {
+			BufferedReader inputStream = new BufferedReader(new FileReader(filename));
+			while (inputStream.read() != -1) {
+			}
+			long duration = StopWatch.stop();
 
-        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
-        while (inputStream.read()!=-1){}
+			System.out.println(duration + " milsec");
+			inputStream.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Filename Not Found");
+		}
 
-        long duration = StopWatch.stop();
-        System.out.println(duration + " milsec");
-        
-        inputStream.close();
+		/*
+		 * //-------------- Test reading 1 MB file. --------------------
+		 * 
+		 * StopWatch.start();
+		 * 
+		 * BufferedReader inputStream= new BufferedReader(new
+		 * FileReader(DumpDataWriter.input1MB)); while (inputStream.read()!=-1){}
+		 * 
+		 * long duration = StopWatch.stop(); System.out.println(duration + " milsec");
+		 * 
+		 * inputStream.close();
+		 * 
+		 * 
+		 * //-------------- Test reading 10 MB file. --------------------
+		 * 
+		 * StopWatch.start();
+		 * 
+		 * BufferedReader inputStream2= new BufferedReader(new
+		 * FileReader(DumpDataWriter.input10MB)); while (inputStream2.read()!=-1){}
+		 * 
+		 * long duration2 = StopWatch.stop(); System.out.println(duration2 + " milsec");
+		 * 
+		 * inputStream2.close();
+		 */
 
-
-        //-------------- Test reading 10 MB file. --------------------
-
-        StopWatch.start();
-
-        BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
-        while (inputStream2.read()!=-1){}
-
-        long duration2 = StopWatch.stop();
-        System.out.println(duration2 + " milsec");
-
-        inputStream2.close();
-
-        /*
-        //-------------- Test reading 100 MB file. --------------------
-
-        StopWatch.start();
-
-        BufferedReader inputStream3= new BufferedReader(new FileReader(DumpDataWriter.input100MB));
-        while (inputStream3.read()!=-1){}
-
-        long duration3 = StopWatch.stop();
-        System.out.println(duration3 + " milsec");
-        
-        inputStream3.close();
-
-
-        //-------------- Test reading 1000 MB file. --------------------
-
-
-        StopWatch.start();
-
-        BufferedReader inputStream4= new BufferedReader(new FileReader(DumpDataWriter.input1000MB));
-        while (inputStream4.read()!=-1){}
-
-        long duration4 = StopWatch.stop();
-        System.out.println(duration4 + " milsec");
-        
-        inputStream4.close();
-        */
-    }
+		/*
+		 * //-------------- Test reading 100 MB file. --------------------
+		 * 
+		 * StopWatch.start();
+		 * 
+		 * BufferedReader inputStream3= new BufferedReader(new
+		 * FileReader(DumpDataWriter.input100MB)); while (inputStream3.read()!=-1){}
+		 * 
+		 * long duration3 = StopWatch.stop(); System.out.println(duration3 + " milsec");
+		 * 
+		 * inputStream3.close();
+		 * 
+		 * 
+		 * //-------------- Test reading 1000 MB file. --------------------
+		 * 
+		 * 
+		 * StopWatch.start();
+		 * 
+		 * BufferedReader inputStream4= new BufferedReader(new
+		 * FileReader(DumpDataWriter.input1000MB)); while (inputStream4.read()!=-1){}
+		 * 
+		 * long duration4 = StopWatch.stop(); System.out.println(duration4 + " milsec");
+		 * 
+		 * inputStream4.close();
+		 */
+	}
 }
