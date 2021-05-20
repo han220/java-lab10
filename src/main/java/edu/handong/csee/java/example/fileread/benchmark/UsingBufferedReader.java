@@ -12,10 +12,16 @@ public class UsingBufferedReader {
 
 		// -------------- Test reading User Input file. --------------------
 
+		// Update 1: Checks if the argument exists if doesn't, it asks using Scanner
+		String filename;
+		if(args.length > 0) {
+			filename = args[0];
+		} else {
 		System.out.print("Please Input File name: ");
 		Scanner s = new Scanner(System.in);
-		String filename = s.nextLine();
+		filename = s.nextLine();
 		s.close();
+		}
 
 		StopWatch.start();
 		try {
